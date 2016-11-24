@@ -38,3 +38,7 @@ def scrape_list(url)
 end
 
 scrape_list('http://www.gov.nu/wb/pages/parliament/assembly.php')
+
+# Archive some other pages for later parsing
+open('http://www.gov.nu/wb/pages/parliament/cabinet.php')
+open('http://www.gov.nu/wb/pages/ministries.php')
