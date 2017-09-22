@@ -28,11 +28,10 @@ def scrape_list(url)
       name:         tds[1].text.tidy.gsub(/^Hon /, ''),
       constituency: tds[0].text.tidy,
       party:        'Independent',
-      term:         15,
       source:       url,
     }
     puts data.reject { |_, v| v.to_s.empty? }.sort_by { |k, _| k }.to_h if ENV['MORPH_DEBUG']
-    ScraperWiki.save_sqlite(%i[name term], data)
+    ScraperWiki.save_sqlite(%i[name], data)
   end
 end
 
