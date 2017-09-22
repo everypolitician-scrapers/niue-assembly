@@ -29,6 +29,8 @@ end
 
 data = scrape_list('http://www.gov.nu/wb/pages/parliament/assembly.php')
 data.each { |mem| puts mem.reject { |_, v| v.to_s.empty? }.sort_by { |k, _| k }.to_h } if ENV['MORPH_DEBUG']
+
+ScraperWiki.sqliteexecute('DROP TABLE data') rescue nil
 ScraperWiki.save_sqlite(%i[name], data)
 
 # Archive some other pages for later parsing
