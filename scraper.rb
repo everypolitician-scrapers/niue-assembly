@@ -16,20 +16,20 @@ end
 
 def scrape_list(url)
   noko = noko_for(url)
-  noko.css('.MsoTableGrid').first.css('tr').drop(1).each do |tr|
+  noko.css('.MsoTableGrid').first.css('tr').drop(1).map do |tr|
     tds = tr.css('td')
-    data = {
+    {
       name:         tds[1].text.tidy.gsub(/^Hon /, ''),
       constituency: tds[0].text.tidy,
       party:        'Independent',
       source:       url,
     }
-    puts data.reject { |_, v| v.to_s.empty? }.sort_by { |k, _| k }.to_h if ENV['MORPH_DEBUG']
-    ScraperWiki.save_sqlite(%i[name], data)
   end
 end
 
-scrape_list('http://www.gov.nu/wb/pages/parliament/assembly.php')
+data = scrape_list('http://www.gov.nu/wb/pages/parliament/assembly.php')
+data.each { |mem| puts mem.reject { |_, v| v.to_s.empty? }.sort_by { |k, _| k }.to_h } if ENV['MORPH_DEBUG']
+ScraperWiki.save_sqlite(%i[name], data)
 
 # Archive some other pages for later parsing
 open('http://www.gov.nu/wb/pages/parliament/cabinet.php')
