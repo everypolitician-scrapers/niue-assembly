@@ -1,5 +1,6 @@
 #!/bin/env ruby
 # encoding: utf-8
+# frozen_string_literal: true
 
 require 'scraperwiki'
 require 'nokogiri'
@@ -11,27 +12,27 @@ require 'scraped_page_archive/open-uri'
 
 class String
   def tidy
-    self.gsub(/[[:space:]]+/, ' ').strip
+    gsub(/[[:space:]]+/, ' ').strip
   end
 end
 
 def noko_for(url)
-  Nokogiri::HTML(open(url).read) 
+  Nokogiri::HTML(open(url).read)
 end
 
 def scrape_list(url)
   noko = noko_for(url)
   noko.css('.MsoTableGrid').first.css('tr').drop(1).each do |tr|
     tds = tr.css('td')
-    data = { 
-      name: tds[1].text.tidy.gsub(/^Hon /,''),
+    data = {
+      name:         tds[1].text.tidy.gsub(/^Hon /, ''),
       constituency: tds[0].text.tidy,
-      party: "Independent",
-      term: 15,
-      source: url,
+      party:        'Independent',
+      term:         15,
+      source:       url,
     }
     puts data
-    ScraperWiki.save_sqlite([:name, :term], data)
+    ScraperWiki.save_sqlite(%i[name term], data)
   end
 end
 
