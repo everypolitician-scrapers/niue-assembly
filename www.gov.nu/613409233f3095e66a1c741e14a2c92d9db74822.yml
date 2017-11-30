@@ -18,7 +18,7 @@ response:
     message: OK
   headers:
     Date:
-    - Wed, 29 Nov 2017 03:15:30 GMT
+    - Thu, 30 Nov 2017 06:53:13 GMT
     Server:
     - Apache
     X-Powered-By:
@@ -30,7 +30,7 @@ response:
     Pragma:
     - no-cache
     Set-Cookie:
-    - wb_8855_session_id=6bc19c2b753b192b40f39da907f2c13e; path=/
+    - wb_8855_session_id=afbaaeb7aff25e1e184a2be228240a3f; path=/
     Transfer-Encoding:
     - chunked
     Content-Type:
@@ -38,4 +38,4 @@ response:
   body:
     encoding: ASCII-8BIT
   http_version: 
-recorded_at: Wed, 29 Nov 2017 03:15:30 GMT
+recorded_at: Thu, 30 Nov 2017 06:53:13 GMT
