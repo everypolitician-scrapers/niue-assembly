@@ -18,7 +18,7 @@ response:
     message: OK
   headers:
     Date:
-    - Thu, 17 May 2018 00:49:41 GMT
+    - Fri, 18 May 2018 02:13:09 GMT
     Server:
     - Apache
     X-Powered-By:
@@ -30,7 +30,7 @@ response:
     Pragma:
     - no-cache
     Set-Cookie:
-    - wb_8855_session_id=2d37989ed5850971249888de96b93a22; path=/
+    - wb_8855_session_id=dc48fd0adf17f56e1802fecc90a4e5e0; path=/
     Content-Type:
     - text/html
     Content-Length:
@@ -38,4 +38,4 @@ response:
   body:
     encoding: UTF-8
   http_version: 
-recorded_at: Thu, 17 May 2018 00:49:41 GMT
+recorded_at: Fri, 18 May 2018 02:13:10 GMT
