@@ -6,9 +6,8 @@ require 'scraped'
 require 'scraperwiki'
 require 'pry'
 
-# require 'open-uri/cached'
-# OpenURI::Cache.cache_path = '.cache'
-require 'scraped_page_archive/open-uri'
+require 'open-uri/cached'
+OpenURI::Cache.cache_path = '.cache'
 
 def noko_for(url)
   Nokogiri::HTML(open(url).read)
@@ -32,7 +31,3 @@ data.each { |mem| puts mem.reject { |_, v| v.to_s.empty? }.sort_by { |k, _| k }.
 
 ScraperWiki.sqliteexecute('DROP TABLE data') rescue nil
 ScraperWiki.save_sqlite(%i[name], data)
-
-# Archive some other pages for later parsing
-open('http://www.gov.nu/wb/pages/parliament/cabinet.php')
-open('http://www.gov.nu/wb/pages/ministries.php')
